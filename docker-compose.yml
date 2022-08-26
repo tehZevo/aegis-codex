@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+
+  codex:
+    build: .
+    stop_signal: SIGINT
+
+  discord:
+    build: https://github.com/tehzevo/aegis-discord.git
+    environment:
+      TOKEN: $TOKEN
+      RECEIVER: "http://codex/discord"
+      REQUIRE_MENTION: false
+
+  stylizer:
+    build: https://github.com/tehzevo/aegis-image-stylizer.git
+    environment:
+      OUTPUT_SIZE: 1024
+
+  yolo:
+    build: https://github.com/tehzevo/aegis-yolo.git
+
+  faces:
+    build: https://github.com/tehzevo/aegis-face-detector.git
+
+  age-gender:
+    build: https://github.com/tehzevo/aegis-age-gender-predictor.git
+
+  slicer:
+    build: https://github.com/tehzevo/aegis-image-slicer.git
+
+  annotator:
+    build: https://github.com/tehzevo/aegis-image-annotator.git
+
+  tts:
+    build: https://github.com/tehzevo/aegis-tts.git
+
+  textgen:
+    build: https://github.com/tehzevo/aegis-textgen.git
+    environment:
+      DEFAULT_MAX_LENGTH: 300
+      MODEL: distilgpt2

@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  discord:
+    build: https://github.com/tehzevo/aegis-discord.git
+    environment:
+      TOKEN: $TOKEN
+      RECEIVER: "http://textgen"
+      ONLY_CONTENT: "true"
+
+  textgen:
+    build: https://github.com/tehzevo/aegis-textgen.git
+    environment:
+      DEFAULT_MAX_LENGTH: 100
